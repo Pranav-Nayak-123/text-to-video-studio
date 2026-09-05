@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import path from 'node:path';
 
 export const SAMPLE_RATE = 48000;
 
@@ -148,8 +149,13 @@ export function softClip(buf, drive = 1) {
   return buf;
 }
 
-/** Write a mono Float32Array as a 16-bit stereo PCM WAV file. */
+/**
+ * Write a mono Float32Array as a 16-bit stereo PCM WAV file.
+ * The destination directory is created if it does not exist yet, so callers
+ * never have to arrange one first.
+ */
 export function writeWav(file, mono, { sampleRate = SAMPLE_RATE, channels = 2 } = {}) {
+  fs.mkdirSync(path.dirname(file), { recursive: true });
   const frames = mono.length;
   const bytesPerSample = 2;
   const dataSize = frames * channels * bytesPerSample;
