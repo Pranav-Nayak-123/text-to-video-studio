@@ -1,0 +1,481 @@
+{
+  "meta": {
+    "id": "the-goal",
+    "title": "The Goal",
+    "subtitle": "3 characters · 4 scenes · Football Field",
+    "version": "2.0.0",
+    "generatedAt": "2026-09-05T02:23:49.912Z",
+    "analyser": "heuristic",
+    "fps": 30,
+    "width": 1920,
+    "height": 1080,
+    "styleId": "cinematic",
+    "targetSeconds": 20,
+    "speechRate": 8,
+    "targetMet": true,
+    "gapScale": 1.21,
+    "naturalSeconds": 20.05
+  },
+  "brand": {
+    "appName": "The Goal",
+    "appSubtitle": "3 characters · 4 scenes · Football Field",
+    "assistantName": "Assistant",
+    "colors": {
+      "bgDeep": "#140F11",
+      "bgPanel": "#241A17",
+      "bgPanelAlt": "#2F221D",
+      "surface": "#382822",
+      "surfaceAlt": "#45322A",
+      "stroke": "#5C4438",
+      "strokeSoft": "#3E2D26",
+      "textPrimary": "#F7EFE8",
+      "textSecondary": "#CBB3A4",
+      "textMuted": "#967D6E",
+      "accent": "#E8925C",
+      "accentDeep": "#B9683A",
+      "accentSoft": "#F6BF95",
+      "teal": "#64B6A8",
+      "success": "#7FBF6A",
+      "warning": "#E0A93F",
+      "userBubble": "#B9683A"
+    },
+    "fonts": {
+      "ui": "Inter",
+      "mono": "JetBrains Mono"
+    }
+  },
+  "presentation": "narrative",
+  "style": {
+    "id": "cinematic",
+    "label": "Cinematic",
+    "description": "Warm, filmic storytelling with speech cards and location titles."
+  },
+  "characters": [
+    {
+      "id": "boy",
+      "key": "boy",
+      "name": "Boy",
+      "displayName": "Boy",
+      "role": "Boy",
+      "kind": "person",
+      "gender": "male",
+      "genderStated": true,
+      "initials": "BO",
+      "accent": "#3E8BFF",
+      "sceneIndexes": [
+        0,
+        1,
+        3
+      ],
+      "descriptors": [],
+      "appearance": {
+        "summary": "Man working as a boy",
+        "skin": "#F0D2B4",
+        "hair": "#2E2119",
+        "garment": {
+          "base": "#3D5233",
+          "dark": "#22301C",
+          "light": "#5E7C4F"
+        },
+        "hairStyle": "short",
+        "build": "regular",
+        "seedPrompt": "Man working as a boy"
+      },
+      "voice": {
+        "provider": "edge-tts",
+        "voiceId": "en-US-GuyNeural",
+        "rate": "+8%",
+        "pitch": "-2Hz",
+        "sapiVoice": "Microsoft David Desktop",
+        "sapiRate": 1
+      }
+    },
+    {
+      "id": "coach",
+      "key": "coach",
+      "name": "Coach",
+      "displayName": "Coach",
+      "role": "Coach",
+      "kind": "person",
+      "gender": "male",
+      "genderStated": true,
+      "initials": "CO",
+      "accent": "#31D8D8",
+      "sceneIndexes": [
+        0,
+        3
+      ],
+      "descriptors": [],
+      "appearance": {
+        "summary": "Man working as a coach",
+        "skin": "#A26F45",
+        "hair": "#8C6239",
+        "garment": {
+          "base": "#24466F",
+          "dark": "#14273F",
+          "light": "#3E72B4"
+        },
+        "hairStyle": "short",
+        "build": "regular",
+        "seedPrompt": "Man working as a coach"
+      },
+      "voice": {
+        "provider": "edge-tts",
+        "voiceId": "en-US-ChristopherNeural",
+        "rate": "+8%",
+        "pitch": "-4Hz",
+        "sapiVoice": "Microsoft David Desktop",
+        "sapiRate": 1
+      }
+    },
+    {
+      "id": "goalkeeper",
+      "key": "goalkeeper",
+      "name": "Goalkeeper",
+      "displayName": "Goalkeeper",
+      "role": "Goalkeeper",
+      "kind": "person",
+      "gender": "male",
+      "genderStated": false,
+      "initials": "GO",
+      "accent": "#25C08B",
+      "sceneIndexes": [
+        2
+      ],
+      "descriptors": [],
+      "appearance": {
+        "summary": "Man working as a goalkeeper",
+        "skin": "#E5BE9A",
+        "hair": "#6B4A2A",
+        "garment": {
+          "base": "#1E5250",
+          "dark": "#10312F",
+          "light": "#33807C"
+        },
+        "hairStyle": "short",
+        "build": "regular",
+        "seedPrompt": "Man working as a goalkeeper"
+      },
+      "voice": {
+        "provider": "edge-tts",
+        "voiceId": "en-US-EricNeural",
+        "rate": "+8%",
+        "pitch": "+0Hz",
+        "sapiVoice": "Microsoft David Desktop",
+        "sapiRate": 1
+      }
+    }
+  ],
+  "narrator": {
+    "id": "narrator",
+    "key": "narrator",
+    "name": "Narrator",
+    "displayName": "Narrator",
+    "role": "Narration",
+    "kind": "narrator",
+    "gender": "narrator",
+    "initials": "NA",
+    "accent": "#CBB3A4",
+    "sceneIndexes": [],
+    "descriptors": [],
+    "appearance": {
+      "summary": "Off-screen narration."
+    },
+    "voice": {
+      "provider": "edge-tts",
+      "voiceId": "en-US-AndrewNeural",
+      "rate": "+10%",
+      "pitch": "-1Hz",
+      "sapiVoice": "Microsoft David Desktop",
+      "sapiRate": 1
+    }
+  },
+  "locations": [
+    {
+      "id": "football-field",
+      "name": "Football Field",
+      "kind": "outdoor"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene1",
+      "index": 0,
+      "number": 1,
+      "title": "Boy Runs Onto Football Field",
+      "label": "SCENE 01 — BOY RUNS ONTO FOOTBALL FIELD",
+      "durationSeconds": 4.67,
+      "location": {
+        "id": "football-field",
+        "name": "Football Field",
+        "kind": "outdoor"
+      },
+      "characterIds": [
+        "boy",
+        "coach"
+      ],
+      "focusId": "boy",
+      "isFinale": false,
+      "camera": {
+        "type": "pushIn",
+        "from": 1,
+        "to": 1.06,
+        "panX": -14,
+        "panY": -6
+      },
+      "beats": [
+        {
+          "id": "s1-b1",
+          "kind": "narration",
+          "text": "A boy runs onto the football field with his coach.",
+          "speakerId": "narrator",
+          "appearAt": 0.54,
+          "duration": 2.8
+        }
+      ],
+      "dialogue": [
+        {
+          "id": "s1-b1-vo",
+          "enabled": true,
+          "characterId": "narrator",
+          "text": "A boy runs onto the football field with his coach.",
+          "speakText": "A boy runs onto the football field with his coach.",
+          "file": "vo_s1-b1_1w39rjz.wav",
+          "startAt": 0.54,
+          "rate": "+8%"
+        }
+      ],
+      "sfx": [],
+      "summary": "A boy runs onto the football field with his coach."
+    },
+    {
+      "id": "scene2",
+      "index": 1,
+      "number": 2,
+      "title": "Boy Kicks Ball Towards Goal",
+      "label": "SCENE 02 — BOY KICKS BALL TOWARDS GOAL",
+      "durationSeconds": 3.74,
+      "location": {
+        "id": "football-field",
+        "name": "Football Field",
+        "kind": "outdoor"
+      },
+      "characterIds": [
+        "boy"
+      ],
+      "focusId": "boy",
+      "isFinale": false,
+      "camera": {
+        "type": "pushIn",
+        "from": 1.06,
+        "to": 1,
+        "panX": 12,
+        "panY": 5
+      },
+      "beats": [
+        {
+          "id": "s2-b1",
+          "kind": "narration",
+          "text": "The boy kicks the ball towards the goal.",
+          "speakerId": "narrator",
+          "appearAt": 0.54,
+          "duration": 1.98
+        }
+      ],
+      "dialogue": [
+        {
+          "id": "s2-b1-vo",
+          "enabled": true,
+          "characterId": "narrator",
+          "text": "The boy kicks the ball towards the goal.",
+          "speakText": "The boy kicks the ball towards the goal.",
+          "file": "vo_s2-b1_1uvucpw.wav",
+          "startAt": 0.54,
+          "rate": "+8%"
+        }
+      ],
+      "sfx": [],
+      "summary": "The boy kicks the ball towards the goal."
+    },
+    {
+      "id": "scene3",
+      "index": 2,
+      "number": 3,
+      "title": "Goalkeeper Dives But Cannot Reach",
+      "label": "SCENE 03 — GOALKEEPER DIVES BUT CANNOT REACH",
+      "durationSeconds": 4.2,
+      "location": {
+        "id": "football-field",
+        "name": "Football Field",
+        "kind": "outdoor"
+      },
+      "characterIds": [
+        "goalkeeper"
+      ],
+      "focusId": "goalkeeper",
+      "isFinale": false,
+      "camera": {
+        "type": "pushIn",
+        "from": 1.02,
+        "to": 1.08,
+        "panX": 8,
+        "panY": -8
+      },
+      "beats": [
+        {
+          "id": "s3-b1",
+          "kind": "narration",
+          "text": "The goalkeeper dives but cannot reach it.",
+          "speakerId": "narrator",
+          "appearAt": 0.54,
+          "duration": 2.39
+        }
+      ],
+      "dialogue": [
+        {
+          "id": "s3-b1-vo",
+          "enabled": true,
+          "characterId": "narrator",
+          "text": "The goalkeeper dives but cannot reach it.",
+          "speakText": "The goalkeeper dives but cannot reach it.",
+          "file": "vo_s3-b1_wvrend.wav",
+          "startAt": 0.54,
+          "rate": "+8%"
+        }
+      ],
+      "sfx": [],
+      "summary": "The goalkeeper dives but cannot reach it."
+    },
+    {
+      "id": "scene4",
+      "index": 3,
+      "number": 4,
+      "title": "Coach Congratulates Him And Boy",
+      "label": "SCENE 04 — COACH CONGRATULATES HIM AND BOY",
+      "durationSeconds": 4.74,
+      "location": {
+        "id": "football-field",
+        "name": "Football Field",
+        "kind": "outdoor"
+      },
+      "characterIds": [
+        "coach",
+        "boy"
+      ],
+      "focusId": "coach",
+      "isFinale": true,
+      "camera": {
+        "type": "pushIn",
+        "from": 1.07,
+        "to": 1.01,
+        "panX": -10,
+        "panY": 6
+      },
+      "beats": [
+        {
+          "id": "s4-b1",
+          "kind": "narration",
+          "text": "The coach congratulates him and the boy celebrates.",
+          "speakerId": "narrator",
+          "appearAt": 0.54,
+          "duration": 2.84
+        }
+      ],
+      "dialogue": [
+        {
+          "id": "s4-b1-vo",
+          "enabled": true,
+          "characterId": "narrator",
+          "text": "The coach congratulates him and the boy celebrates.",
+          "speakText": "The coach congratulates him and the boy celebrates.",
+          "file": "vo_s4-b1_1ufiyrv.wav",
+          "startAt": 0.54,
+          "rate": "+8%"
+        }
+      ],
+      "sfx": [
+        {
+          "cue": "success",
+          "at": 2
+        }
+      ],
+      "summary": "The coach congratulates him and the boy celebrates."
+    }
+  ],
+  "transitions": [
+    {
+      "id": "t1",
+      "afterScene": "scene1",
+      "fromIndex": 0,
+      "toIndex": 1,
+      "durationSeconds": 0.8,
+      "type": "fade",
+      "caption": "Boy Kicks Ball Towards Goal",
+      "sfx": "transition"
+    },
+    {
+      "id": "t2",
+      "afterScene": "scene2",
+      "fromIndex": 1,
+      "toIndex": 2,
+      "durationSeconds": 0.8,
+      "type": "fade",
+      "caption": "Goalkeeper Dives But Cannot Reach",
+      "sfx": "transition"
+    },
+    {
+      "id": "t3",
+      "afterScene": "scene3",
+      "fromIndex": 2,
+      "toIndex": 3,
+      "durationSeconds": 1.05,
+      "type": "resolve",
+      "caption": "Coach Congratulates Him And Boy",
+      "sfx": "transition"
+    }
+  ],
+  "audio": {
+    "music": {
+      "file": "music_bed.wav",
+      "volume": 0.1,
+      "fadeInSeconds": 1.2,
+      "fadeOutSeconds": 2.2
+    },
+    "sfx": {
+      "notification": {
+        "file": "sfx_notification.wav",
+        "volume": 0.26
+      },
+      "message": {
+        "file": "sfx_message.wav",
+        "volume": 0.18
+      },
+      "typing": {
+        "file": "sfx_typing.wav",
+        "volume": 0.12
+      },
+      "processing": {
+        "file": "sfx_processing.wav",
+        "volume": 0.16
+      },
+      "success": {
+        "file": "sfx_success.wav",
+        "volume": 0.3
+      },
+      "transition": {
+        "file": "sfx_transition.wav",
+        "volume": 0.17
+      }
+    },
+    "dialogueVolume": 1
+  },
+  "totals": {
+    "seconds": 20,
+    "frames": 600,
+    "scenes": 4,
+    "transitions": 3,
+    "characters": 3,
+    "spokenLines": 4
+  },
+  "source": "A boy runs onto the football field with his coach. The boy kicks the ball towards the goal. The goalkeeper dives but cannot reach it. The coach congratulates him and the boy celebrates."
+}

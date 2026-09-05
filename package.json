@@ -1,0 +1,37 @@
+{
+  "name": "mimmo-video-pipeline",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "BCM Request Automation - Enterprise Client & Integration Workflow video generation pipeline",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "story": "node scripts/story.mjs",
+    "assets": "node scripts/assets.mjs",
+    "render": "node engine/render/render.mjs",
+    "verify": "node engine/render/verify.mjs",
+    "studio": "remotion studio",
+    "test": "node --test \"tests/*.test.mjs\"",
+    "server": "node server/index.js",
+    "start": "node scripts/start.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.520",
+    "@remotion/cli": "4.0.520",
+    "@remotion/fonts": "^4.0.520",
+    "@remotion/google-fonts": "4.0.520",
+    "@remotion/media-utils": "4.0.520",
+    "@remotion/renderer": "4.0.520",
+    "express": "5.2.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.520"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.0",
+    "typescript": "5.9.3"
+  }
+}

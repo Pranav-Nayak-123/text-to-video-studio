@@ -1,0 +1,15 @@
+Scene: Corporate Office Workstation
+
+The Customer sits at his workstation and opens the BCM assistant. The Customer types: "build a client in system QL9, the new client number is 205 . Along with integration scenario ZDOC" The assistant replies: "Your BCM request is successfully created, BCM request number is BCM002345"
+
+Scene: Operations Management Desk
+
+The Request Manager reads a notification at her desk. The assistant notifies: "BCM request BCM002345 is in the queue" The Request Manager asks: "Please let me know the status of available operation colleagues" The assistant replies: "COE Operator Operator 1 is free." The Request Manager types: "assign this BCM request BCM002345 to Operator 1"
+
+Scene: COE Operations Centre
+
+The COE Operator 1 reviews the queue at the operations centre. The assistant notifies: "BCM request BCM002345 is assigned to his name." The COE Operator 1 asks: "Show the details of the BCM request which is assigned to me?" The assistant displays: "BCM Request BCM002345, System QL9, Client Number 205, Integration Scenario ZDOC" The COE Operator 1 types: "execute Client copy and the integration processes"
+
+Scene: Completion Summary
+
+The assistant confirms: "Client copy and Integration procedures are completed successfully" The request is completed successfully.

@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Generated assets — all rebuilt by `npm run assets`
+public/audio/*
+!public/audio/.gitkeep
+public/fonts/*
+!public/fonts/.gitkeep
+public/plates/*.svg
+public/plates/*.png
+assets/
+
+# Rendered output
+output/*
+!output/.gitkeep
+temp/
+
+# Local configuration
+.env
+*.log

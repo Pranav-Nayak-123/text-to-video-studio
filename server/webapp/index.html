@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Text to Video Studio</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%233E8BFF'/><path d='M38 30 L72 50 L38 70 Z' fill='white'/></svg>" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="masthead">
+    <div class="brand">
+      <div class="brand-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M9 7 L18 12 L9 17 Z" fill="white"/>
+        </svg>
+      </div>
+      <div>
+        <h1>Text to Video Studio</h1>
+        <p>Paste any story — the pipeline finds the characters, scenes and dialogue, then makes the video</p>
+      </div>
+    </div>
+    <div class="masthead-meta" id="masthead-meta"></div>
+  </header>
+
+  <main class="layout">
+    <!-- Left: story input and settings -->
+    <section class="panel" aria-labelledby="story-heading">
+      <div class="panel-head">
+        <h2 id="story-heading">Story</h2>
+        <span class="chip" id="word-count">0 words</span>
+      </div>
+
+      <textarea
+        id="story"
+        class="story-input"
+        rows="12"
+        spellcheck="false"
+        placeholder="A customer enters a coffee shop. He asks the cashier for a cappuccino. The cashier takes the order and the barista prepares the drink. The customer receives the coffee and leaves."
+      ></textarea>
+
+      <div class="samples">
+        <span class="samples-label">Try a sample</span>
+        <div id="samples" class="sample-buttons"></div>
+      </div>
+
+      <div class="subhead">Settings</div>
+      <div class="settings">
+        <label class="field">
+          <span>Target duration</span>
+          <select id="duration">
+            <option value="">Auto (from the story)</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Visual style</span>
+          <select id="style">
+            <option value="">Auto (from the story)</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span>Aspect ratio</span>
+          <select id="aspect"></select>
+        </label>
+
+        <label class="field">
+          <span>Voices</span>
+          <select id="voice">
+            <option value="balanced">Balanced</option>
+            <option value="male">Prefer male</option>
+            <option value="female">Prefer female</option>
+          </select>
+        </label>
+
+        <label class="field field-wide">
+          <span>Title <em>optional</em></span>
+          <input id="title" type="text" placeholder="Derived from the story" />
+        </label>
+      </div>
+
+      <div class="options">
+        <label class="option">
+          <input type="checkbox" id="opt-music" checked />
+          <span><strong>Background music</strong><em>A quiet bed under the dialogue.</em></span>
+        </label>
+        <label class="option">
+          <input type="checkbox" id="opt-offline" />
+          <span><strong>Offline mode</strong><em>Skip every network provider; use built-in visuals and local voices.</em></span>
+        </label>
+        <label class="option">
+          <input type="checkbox" id="opt-force" />
+          <span><strong>Rebuild all assets</strong><em>Re-synthesise plates and audio instead of reusing what is cached.</em></span>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button id="generate" class="btn btn-primary">Generate video</button>
+        <button id="analyse" class="btn">Analyse only</button>
+      </div>
+    </section>
+
+    <!-- Right: plan, progress and preview -->
+    <section class="panel" aria-labelledby="plan-heading">
+      <div class="panel-head">
+        <h2 id="plan-heading">Video plan</h2>
+        <span class="chip" id="status-chip">Ready</span>
+      </div>
+
+      <div id="plan-empty" class="empty">
+        <p>Paste a story and the analysis appears here — characters, scenes, dialogue and estimated duration — before anything is rendered.</p>
+      </div>
+
+      <div id="plan" hidden>
+        <div class="plan-stats" id="plan-stats"></div>
+
+        <div class="subhead">Characters detected</div>
+        <div class="characters" id="characters"></div>
+
+        <div class="subhead">Scenes detected</div>
+        <ol class="timeline" id="timeline"></ol>
+      </div>
+
+      <div class="progress-block" id="progress-block" hidden>
+        <div class="progress-top">
+          <span id="progress-stage">Starting…</span>
+          <span id="progress-pct">0%</span>
+        </div>
+        <div class="bar"><div class="bar-fill" id="bar-fill"></div></div>
+        <div class="stages" id="stages"></div>
+        <pre class="log" id="log" aria-live="polite"></pre>
+      </div>
+
+      <div class="error-block" id="error-block" hidden>
+        <strong>Generation failed</strong>
+        <p id="error-message"></p>
+        <p class="error-hint" id="error-hint"></p>
+      </div>
+
+      <div class="subhead">Preview</div>
+      <div class="player">
+        <div class="player-empty" id="player-empty">
+          <svg width="46" height="46" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5Z" stroke="currentColor" stroke-width="1.5"/>
+            <path d="m10.5 9.5 4.5 2.5-4.5 2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+          </svg>
+          <p>No video yet.</p>
+        </div>
+        <video id="video" controls preload="metadata" hidden></video>
+      </div>
+
+      <div class="actions">
+        <button id="download" class="btn" disabled>Download MP4</button>
+      </div>
+
+      <div class="checks" id="checks" hidden>
+        <div class="subhead">Verification</div>
+        <ul id="checks-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="./app.js" type="module"></script>
+</body>
+</html>

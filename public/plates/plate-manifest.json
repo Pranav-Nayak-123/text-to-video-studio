@@ -1,0 +1,58 @@
+{
+  "generatedAt": "2026-09-05T02:23:49.918Z",
+  "provider": "vector",
+  "scenes": [
+    {
+      "id": "scene1",
+      "plate": "plates/scene1.svg",
+      "photoreal": false,
+      "location": "outdoor",
+      "characters": [
+        "boy",
+        "coach"
+      ]
+    },
+    {
+      "id": "scene2",
+      "plate": "plates/scene2.svg",
+      "photoreal": false,
+      "location": "outdoor",
+      "characters": [
+        "boy"
+      ]
+    },
+    {
+      "id": "scene3",
+      "plate": "plates/scene3.svg",
+      "photoreal": false,
+      "location": "outdoor",
+      "characters": [
+        "goalkeeper"
+      ]
+    },
+    {
+      "id": "scene4",
+      "plate": "plates/scene4.svg",
+      "photoreal": false,
+      "location": "outdoor",
+      "characters": [
+        "coach",
+        "boy"
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "boy",
+      "portrait": "plates/portrait_boy.svg"
+    },
+    {
+      "id": "coach",
+      "portrait": "plates/portrait_coach.svg"
+    },
+    {
+      "id": "goalkeeper",
+      "portrait": "plates/portrait_goalkeeper.svg"
+    }
+  ]
+}
