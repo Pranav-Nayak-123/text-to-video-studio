@@ -1,9 +1,25 @@
 {
-  "name": "mimmo-video-pipeline",
+  "name": "text-to-video-studio",
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "BCM Request Automation - Enterprise Client & Integration Workflow video generation pipeline",
+  "description": "Turns any story into a narrated video: derives characters, scenes, dialogue and timing from plain text, then generates visuals, voices and a rendered MP4.",
+  "license": "MIT",
+  "author": "Pranav Nayak",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pranav-Nayak-123/text-to-video-studio.git"
+  },
+  "keywords": [
+    "text-to-video",
+    "video-generation",
+    "remotion",
+    "story-analysis",
+    "nlp",
+    "text-to-speech",
+    "ffmpeg",
+    "generative-media"
+  ],
   "engines": {
     "node": ">=18"
   },

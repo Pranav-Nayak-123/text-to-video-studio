@@ -292,6 +292,12 @@ studio displays all three.
 
 ---
 
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+---
+
 ## Built with
 
 [Remotion](https://remotion.dev) · [Express](https://expressjs.com) ·
