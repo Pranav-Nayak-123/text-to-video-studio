@@ -140,13 +140,26 @@ describe('character figures and plates', () => {
 });
 
 /**
- * These check the assets for whatever plan is currently on disk. They skip on a
- * fresh checkout, so `npm test` is useful before the first generation.
+ * These check the assets belonging to whatever plan is currently on disk.
+ *
+ * They are skipped until assets have actually been built for that plan. A
+ * checkout ships a seed plan but no assets, so without this guard a fresh clone
+ * would report failures for work it was never asked to do.
  */
-const hasPlan = planExists();
+function assetsBuiltFor(plan) {
+  if (!plan) return false;
+  const lines = plan.scenes.flatMap((s) => (s.dialogue ?? []).filter((d) => d.enabled !== false));
+  if (!lines.length) return false;
+  return lines.every((line) => fs.existsSync(path.join(PATHS.audio, line.file)));
+}
 
-describe('generated assets for the current plan', { skip: hasPlan ? false : 'no plan generated yet' }, () => {
-  const current = hasPlan ? loadPlan() : null;
+const currentPlan = planExists() ? loadPlan() : null;
+const hasAssets = assetsBuiltFor(currentPlan);
+
+describe('generated assets for the current plan', {
+  skip: hasAssets ? false : 'assets not built for the current plan — run "npm run assets"',
+}, () => {
+  const current = currentPlan;
 
   test('a plate exists for every scene', () => {
     for (const scene of current.scenes) {

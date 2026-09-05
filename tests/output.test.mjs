@@ -2,17 +2,20 @@ import { test, describe, before } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { verifyOutput } from '../engine/render/verify.mjs';
-import { DEFAULT_OUTPUT } from '../engine/render/render.mjs';
-import { planExists } from '../engine/plan/store.mjs';
+import { DEFAULT_OUTPUT, isRenderOf } from '../engine/render/render.mjs';
+import { planExists, loadPlan } from '../engine/plan/store.mjs';
 
 /**
  * Acceptance tests for the rendered video. They run the same verification the
- * web application runs after a generation, and skip cleanly when nothing has
- * been rendered yet so `npm test` is useful on a fresh checkout.
+ * web application runs after a generation.
+ *
+ * They are skipped unless a video exists that was rendered from the plan
+ * currently loaded. Checking a video of one story against the plan of another
+ * proves nothing, and on a fresh checkout there is no video at all.
  */
-const ready = fs.existsSync(DEFAULT_OUTPUT) && planExists();
+const ready = planExists() && fs.existsSync(DEFAULT_OUTPUT) && isRenderOf(loadPlan());
 
-describe('rendered video', { skip: ready ? false : 'nothing rendered yet — run "npm run story -- <file> --render"' }, () => {
+describe('rendered video', { skip: ready ? false : 'no video rendered from the current plan — run "npm run story -- <file> --render"' }, () => {
   let report;
 
   before(async () => { report = await verifyOutput({ file: DEFAULT_OUTPUT }); });

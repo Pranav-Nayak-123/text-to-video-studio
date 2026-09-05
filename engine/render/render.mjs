@@ -8,6 +8,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { bundle } from '@remotion/bundler';
 import { renderMedia, selectComposition } from '@remotion/renderer';
 import { PATHS, ensureDir } from '../io/paths.mjs';
@@ -93,6 +94,18 @@ export async function renderVideo({ onProgress, output = DEFAULT_OUTPUT, concurr
   }
 
   const bytes = fs.statSync(output).size;
+
+  // Stamp the output with the plan it came from. Without this there is no way
+  // to tell whether a file on disk belongs to the plan currently loaded, which
+  // matters as soon as you render a second story.
+  fs.writeFileSync(stampFor(output), JSON.stringify({
+    planId: plan.meta.id,
+    title: plan.meta.title,
+    frames: totalFrames(plan),
+    seconds: totalSeconds(plan),
+    renderedAt: new Date().toISOString(),
+  }, null, 2));
+
   emit('render', 1, 'Render complete');
 
   return {
@@ -101,6 +114,24 @@ export async function renderVideo({ onProgress, output = DEFAULT_OUTPUT, concurr
     seconds: totalSeconds(plan),
     bytes,
   };
+}
+
+/** Path of the sidecar recording which plan produced a given video. */
+export function stampFor(output = DEFAULT_OUTPUT) {
+  return output.replace(/\.mp4$/, '') + '.render.json';
+}
+
+/**
+ * Was `output` rendered from `plan`? Used by the tests and by anything that
+ * needs to know whether a video on disk is current.
+ */
+export function isRenderOf(plan, output = DEFAULT_OUTPUT) {
+  try {
+    const stamp = JSON.parse(fs.readFileSync(stampFor(output), 'utf8'));
+    return stamp.planId === plan.meta.id && stamp.frames === totalFrames(plan);
+  } catch {
+    return false;
+  }
 }
 
 /** Fails fast with an actionable message when a generated asset is missing. */
@@ -124,8 +155,23 @@ function assertAssets(plan) {
     }
   }
 
-  if (!fs.existsSync(path.join(PATHS.audio, plan.audio.music.file))) {
+  const musicFile = path.join(PATHS.audio, plan.audio.music.file);
+  if (!fs.existsSync(musicFile)) {
     missing.push(`public/audio/${plan.audio.music.file}`);
+  } else if (plan.audio.music.volume > 0) {
+    // The bed has a fixed name but a plan-dependent length. Rendering a longer
+    // story against a shorter story's bed would silently drop the music before
+    // the end, so check it rather than trusting the file name.
+    const probe = spawnSync('ffprobe',
+      ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', musicFile],
+      { encoding: 'utf8', windowsHide: true });
+    const seconds = parseFloat(String(probe.stdout).trim());
+    if (Number.isFinite(seconds) && seconds + 0.5 < totalSeconds(plan)) {
+      missing.push(
+        `public/audio/${plan.audio.music.file} is ${seconds.toFixed(1)}s but this plan runs ` +
+        `${totalSeconds(plan).toFixed(1)}s (it was built for a different story)`,
+      );
+    }
   }
   if (!fs.existsSync(path.join(platesDir, 'plate-manifest.json'))) {
     missing.push('public/plates/plate-manifest.json');
