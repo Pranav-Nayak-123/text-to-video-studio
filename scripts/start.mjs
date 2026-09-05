@@ -4,7 +4,7 @@
  */
 import { spawn } from 'node:child_process';
 import path from 'node:path';
-import { PATHS } from './lib/paths.mjs';
+import { PATHS } from '../engine/io/paths.mjs';
 
 const port = process.env.PORT || '5178';
 const url = `http://localhost:${port}`;
