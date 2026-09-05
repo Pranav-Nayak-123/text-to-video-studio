@@ -8,7 +8,6 @@ public/fonts/*
 !public/fonts/.gitkeep
 public/plates/*.svg
 public/plates/*.png
-assets/
 
 # Rendered output
 output/*
